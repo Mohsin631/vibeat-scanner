@@ -25,6 +25,8 @@ const Login = ({ onLogin }: LoginProps) => {
         const data = await response.json();
         
         if (data.token) {
+          // Store token in localStorage for persistence
+          localStorage.setItem('vibeat_token', data.token);
           onLogin(data.token);
           toast({
             title: "Login Successful",

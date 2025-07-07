@@ -21,7 +21,7 @@ const DirectLogin = () => {
           description: "No OTP provided in the URL.",
           variant: "destructive",
         });
-        navigate('/');
+        navigate('/login');
         return;
       }
 
@@ -31,7 +31,7 @@ const DirectLogin = () => {
           description: "OTP must be 10 digits long.",
           variant: "destructive",
         });
-        navigate('/');
+        navigate('/login');
         return;
       }
 
@@ -40,15 +40,15 @@ const DirectLogin = () => {
         const data = await response.json();
         
         if (data.token) {
-          // Store token and redirect to dashboard with token
-          sessionStorage.setItem('vibeat_token', data.token);
+          // Store token in localStorage for persistence
+          localStorage.setItem('vibeat_token', data.token);
           toast({
             title: "Login Successful",
             description: "Redirecting to dashboard...",
           });
           
-          // Navigate to main app with token in state
-          navigate('/', { 
+          // Navigate to dashboard
+          navigate('/dashboard', { 
             state: { 
               autoLogin: true, 
               token: data.token 
@@ -60,7 +60,7 @@ const DirectLogin = () => {
             description: data.message,
             variant: "destructive",
           });
-          navigate('/');
+          navigate('/login');
         }
       } catch (error) {
         console.error('Direct login error:', error);
@@ -69,7 +69,7 @@ const DirectLogin = () => {
           description: "Please check your connection and try again.",
           variant: "destructive",
         });
-        navigate('/');
+        navigate('/login');
       } finally {
         setIsLoading(false);
       }

@@ -1,4 +1,3 @@
-
 const BASE_URL = 'https://vibeat.io/api/v1/scanner';
 
 export interface LoginResponse {
