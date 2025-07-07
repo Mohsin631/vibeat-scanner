@@ -1,0 +1,148 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 100% 97%;
+    --foreground: 220 20% 15%;
+
+    --card: 220 50% 95%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 220 50% 95%;
+    --popover-foreground: 220 20% 15%;
+
+    --primary: 260 60% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 30% 85%;
+    --secondary-foreground: 220 20% 15%;
+
+    --muted: 220 30% 90%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 250 50% 85%;
+    --accent-foreground: 220 20% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 85%;
+    --input: 220 20% 85%;
+    --ring: 260 60% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 30% 95%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 260 60% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 50% 90%;
+    --sidebar-accent-foreground: 220 20% 15%;
+    --sidebar-border: 220 20% 80%;
+    --sidebar-ring: 260 60% 50%;
+  }
+
+  .dark {
+    --background: 260 50% 8%;
+    --foreground: 220 20% 90%;
+
+    --card: 260 40% 12%;
+    --card-foreground: 220 20% 90%;
+
+    --popover: 260 40% 12%;
+    --popover-foreground: 220 20% 90%;
+
+    --primary: 260 60% 65%;
+    --primary-foreground: 260 50% 8%;
+
+    --secondary: 260 20% 20%;
+    --secondary-foreground: 220 20% 90%;
+
+    --muted: 260 20% 20%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 250 50% 25%;
+    --accent-foreground: 220 20% 90%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 20% 20%;
+    --input: 260 20% 20%;
+    --ring: 260 60% 65%;
+
+    --sidebar-background: 260 50% 10%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-primary: 260 60% 65%;
+    --sidebar-primary-foreground: 260 50% 8%;
+    --sidebar-accent: 250 50% 15%;
+    --sidebar-accent-foreground: 220 20% 85%;
+    --sidebar-border: 260 20% 15%;
+    --sidebar-ring: 260 60% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Mobile background (portrait/narrow) with backdrop blur */
+    background-image: url('/lovable-uploads/d7858d79-8d2f-4335-abf6-8048a3a9cc7c.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Desktop background (landscape/wide) */
+  @media (min-width: 768px) {
+    body {
+      background-image: url('/lovable-uploads/fdf4457c-ddbd-481b-bb5a-613d3bc0aedd.png');
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+}
+
+/* Custom gradient backgrounds for compatibility */
+.gradient-bg-primary {
+  /* Mobile background (portrait/narrow) with backdrop blur */
+  background-image: url('/lovable-uploads/d7858d79-8d2f-4335-abf6-8048a3a9cc7c.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Desktop background (landscape/wide) */
+@media (min-width: 768px) {
+  .gradient-bg-primary {
+    background-image: url('/lovable-uploads/fdf4457c-ddbd-481b-bb5a-613d3bc0aedd.png');
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+.gradient-bg-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+}
+
+.glass-effect {
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
