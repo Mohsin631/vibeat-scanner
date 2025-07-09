@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,10 +11,16 @@ const DirectLogin = () => {
   const { toast } = useToast();
 
   useEffect(() => {
+    console.log('DirectLogin component mounted');
+    console.log('Current URL:', window.location.href);
+    console.log('Search params:', searchParams.toString());
+    
     const handleDirectLogin = async () => {
       const otp = searchParams.get('otp');
+      console.log('OTP from URL:', otp);
       
       if (!otp) {
+        console.log('No OTP found in URL');
         toast({
           title: "Invalid URL",
           description: "No OTP provided in the URL.",
@@ -26,6 +31,7 @@ const DirectLogin = () => {
       }
 
       if (otp.length !== 10) {
+        console.log('Invalid OTP length:', otp.length);
         toast({
           title: "Invalid OTP",
           description: "OTP must be 10 digits long.",
@@ -36,8 +42,10 @@ const DirectLogin = () => {
       }
 
       try {
+        console.log('Making API call with OTP:', otp);
         const response = await fetch(`https://vibeat.io/api/v1/scanner/get-access-token?otp=${otp}`);
         const data = await response.json();
+        console.log('API response:', data);
         
         if (data.token) {
           // Store token in localStorage for persistence
@@ -55,6 +63,7 @@ const DirectLogin = () => {
             } 
           });
         } else if (data.message) {
+          console.log('Login failed:', data.message);
           toast({
             title: "Login Failed",
             description: data.message,
@@ -77,6 +86,8 @@ const DirectLogin = () => {
 
     handleDirectLogin();
   }, [searchParams, navigate, toast]);
+
+  console.log('DirectLogin render - isLoading:', isLoading);
 
   return (
     <div className="min-h-screen flex items-center justify-center gradient-bg-primary relative overflow-hidden">

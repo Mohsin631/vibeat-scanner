@@ -77,10 +77,10 @@ const Login = ({ onLogin }: LoginProps) => {
             </div>
             
             <div className="space-y-3">
-              <CardTitle className="text-4xl font-bold text-white">
+              <CardTitle className="text-2xl font-bold text-white">
                 Vibeat Ticket Scanner
               </CardTitle>
-              <CardDescription className="text-gray-200 text-lg font-medium">
+              <CardDescription className="text-gray-200 text-lg font-small">
                 Enter your 10-digit organizer code
               </CardDescription>
             </div>
@@ -97,7 +97,7 @@ const Login = ({ onLogin }: LoginProps) => {
                     value={otp}
                     onChange={handleInputChange}
                     maxLength={10}
-                    className="w-full h-16 text-center text-2xl font-mono tracking-widest glass-effect text-white placeholder:text-gray-300 focus:ring-2 focus:ring-white/40 focus:border-white/40 transition-all duration-300 bg-white/10"
+                    className="w-full h-16 text-center text-2xl font-mono tracking-widest glass-effect text-white placeholder:text-gray-300 placeholder:text-sm md:placeholder:text-base focus:ring-2 focus:ring-white/40 focus:border-white/40 transition-all duration-300 bg-white/10"
                   />
                 </div>
                 

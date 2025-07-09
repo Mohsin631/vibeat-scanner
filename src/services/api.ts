@@ -1,3 +1,4 @@
+
 const BASE_URL = 'https://vibeat.io/api/v1/scanner';
 
 export interface LoginResponse {
@@ -17,6 +18,7 @@ export interface Event {
   id: number;
   event_name: string;
   start_date: string;
+  end_date?: string;
   status: string;
   location: string;
   thumbnail: string;
@@ -43,6 +45,14 @@ export interface Attendee {
   booking_id: string;
   ticket_type?: string;
   scanned: boolean;
+}
+
+export interface PaginatedAttendeesResponse {
+  data: Ticket[];
+  current_page: number;
+  last_page: number;
+  per_page: number;
+  total: number;
 }
 
 export const apiService = {
@@ -101,6 +111,17 @@ export const apiService = {
       ticket_type: ticket.ticket_type,
       scanned: ticket.scan_status === 1
     }));
+  },
+
+  async getEventAttendeesPaginated(eventId: string, token: string, page: number = 1): Promise<PaginatedAttendeesResponse> {
+    const response = await fetch(`${BASE_URL}/tickets/${eventId}?token=${token}&paging=1&per_page=20&page=${page}`);
+    const data = await response.json();
+    
+    if (data.message === 'Unauthorized') {
+      throw new Error('Unauthorized');
+    }
+    
+    return data;
   },
 
   async scanTicket(token: string, qrCode: string, eventId: number): Promise<{

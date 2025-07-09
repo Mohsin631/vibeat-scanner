@@ -96,45 +96,37 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    /* Mobile background (portrait/narrow) with backdrop blur */
-    background-image: url('/lovable-uploads/d7858d79-8d2f-4335-abf6-8048a3a9cc7c.png');
+    /* Mobile background (portrait/narrow) */
+    background-image: url('/lovable-uploads/46a71f12-bd8d-4033-955b-f504902018be.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
   }
 
   /* Desktop background (landscape/wide) */
   @media (min-width: 768px) {
     body {
       background-image: url('/lovable-uploads/fdf4457c-ddbd-481b-bb5a-613d3bc0aedd.png');
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
     }
   }
 }
 
 /* Custom gradient backgrounds for compatibility */
 .gradient-bg-primary {
-  /* Mobile background (portrait/narrow) with backdrop blur */
-  background-image: url('/lovable-uploads/d7858d79-8d2f-4335-abf6-8048a3a9cc7c.png');
+  /* Mobile background (portrait/narrow) */
+  background-image: url('/lovable-uploads/46a71f12-bd8d-4033-955b-f504902018be.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 /* Desktop background (landscape/wide) */
 @media (min-width: 768px) {
   .gradient-bg-primary {
     background-image: url('/lovable-uploads/fdf4457c-ddbd-481b-bb5a-613d3bc0aedd.png');
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 }
 
